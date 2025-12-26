@@ -184,6 +184,10 @@ export class UserAuthManager {
    * Verify and decode a JWT session token
    */
   static async verifySessionToken(token: string): Promise<{ userId: string } | null> {
+    if (process.env.DISABLE_AUTH === 'true') {
+      return { valid: true, email: 'bypassed@meta-mcp' }; // Байпас
+    }
+    
     try {
       const secret = new TextEncoder().encode(this.JWT_SECRET);
       const { payload } = await jwtVerify(token, secret);
