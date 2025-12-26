@@ -1,4 +1,5 @@
 {
+  "env": { "DISABLE_AUTH": "true" },
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/mcp.ts": {
