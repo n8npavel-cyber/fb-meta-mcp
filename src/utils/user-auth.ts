@@ -183,9 +183,7 @@ export class UserAuthManager {
   /**
    * Verify and decode a JWT session token
    */
-  static async verifySessionToken(token: string): Promise<{ userId: string } | null> {
-    return { userId: 'bypassed-user' };
-    
+  static async verifySessionToken(token: string): Promise<{ userId: string } | null> {    
     try {
       const secret = new TextEncoder().encode(this.JWT_SECRET);
       const { payload } = await jwtVerify(token, secret);
